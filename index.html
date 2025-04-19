@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <img id="loading-image" src="https://eaglercraft.com/img/steve.png" alt="Loading" class="pixel-art">
+        <p id="loading-text">Download the files needed to play</p>
+        <div id="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+        <button id="download-btn">Download</button>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu">
+        <h1 class="menu-title">PIXEL ADVENTURE</h1>
+        <button id="play-btn" class="menu-btn">PLAY</button>
+        <button id="settings-btn" class="menu-btn">SETTINGS</button>
+        <button id="credits-btn" class="menu-btn">CREDITS</button>
+    </div>
+
+    <!-- Settings Menu -->
+    <div id="settings-menu">
+        <div class="settings-container">
+            <h2 class="settings-title">SETTINGS</h2>
+            <div class="settings-option">
+                <label class="settings-label">Music Volume</label>
+                <input type="range" min="0" max="100" value="50" class="settings-slider" id="music-volume">
+            </div>
+            <div class="settings-option">
+                <label class="settings-label">SFX Volume</label>
+                <input type="range" min="0" max="100" value="70" class="settings-slider" id="sfx-volume">
+            </div>
+            <button id="back-btn" class="settings-btn">BACK</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen">
+        <div id="hud">
+            <div class="health-bar">
+                <div class="health-fill" id="player-health"></div>
+            </div>
+            <div>Level: <span id="level-display">1</span></div>
+            <div>Score: <span id="score-display">0</span></div>
+        </div>
+        <canvas id="game-canvas"></canvas>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="main-theme" loop>
+        <source src="assets/sounds/main-theme.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="jump-sound">
+        <source src="assets/sounds/jump.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="attack-sound">
+        <source src="assets/sounds/attack.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="gameData.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
