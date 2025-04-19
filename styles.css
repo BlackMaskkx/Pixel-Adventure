@@ -242,3 +242,19 @@ body {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
   }
+
+/* Estilo para sprites ASCII */
+#game-canvas {
+  background-color: #222;
+  image-rendering: pixelated;
+}
+
+/* Fuente monoespaciada para ASCII art */
+@font-face {
+  font-family: 'Pixel ASCII';
+  src: local('Courier New'), local('Monaco');
+}
+
+canvas {
+  font-family: 'Pixel ASCII', monospace;
+}
