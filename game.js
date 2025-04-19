@@ -346,5 +346,90 @@ window.addEventListener('resize', function() {
     }
 });
 
+// ======================
+// SPRITES (ASCII ART)
+// ======================
+const asciiSprites = {
+  player: [
+    '  O  ',
+    ' /|\\ ',
+    ' / \\ '
+  ],
+  slime: [
+    ' ~~~ ',
+    '~~~~~',
+    ' ~~~ '
+  ],
+  skeleton: [
+    '  X  ',
+    ' /|\\ ',
+    ' / \\ '
+  ],
+  health: [
+    ' ❤❤❤ ',
+    '❤❤❤❤',
+    ' ❤❤❤ '
+  ]
+};
+
+// ======================
+// SONIDOS SINTÉTICOS (Web Audio API)
+// ======================
+function playJumpSound() {
+  const ctx = new AudioContext();
+  const osc = ctx.createOscillator();
+  osc.type = "sine";
+  osc.frequency.value = 800;
+  osc.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.1);
+}
+
+function playAttackSound() {
+  const ctx = new AudioContext();
+  const osc = ctx.createOscillator();
+  osc.type = "square";
+  osc.frequency.value = 200;
+  osc.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.3);
+}
+
+// ======================
+// DIBUJAR SPRITES ASCII
+// ======================
+function drawAsciiSprite(x, y, sprite) {
+  const tileSize = 16; // Tamaño de cada "píxel" ASCII
+  ctx.font = `${tileSize}px monospace`;
+  ctx.fillStyle = '#FFFFFF';
+  
+  sprite.forEach((line, i) => {
+    ctx.fillText(line, x, y + (i * tileSize));
+  });
+}
+
+// Modificar las funciones de dibujo originales:
+function drawPlayer() {
+  drawAsciiSprite(player.x, player.y, asciiSprites.player);
+}
+
+function drawEnemies() {
+  enemies.forEach(enemy => {
+    drawAsciiSprite(enemy.x, enemy.y, asciiSprites[enemy.type]);
+  });
+}
+
+function drawItems() {
+  items.forEach(item => {
+    drawAsciiSprite(item.x, item.y, asciiSprites.health);
+  });
+}
+
+// Reemplazar los sonidos antiguos:
+// En lugar de:
+// document.getElementById('jump-sound').play();
+// Usar:
+playJumpSound();
+
 // Initialize game when page loads
 window.onload = init;
