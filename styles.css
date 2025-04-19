@@ -1,0 +1,244 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #fff;
+    overflow: hidden;
+    transition: background-color 0.5s;
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#loading-image {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 20px;
+}
+
+#loading-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#loading-bar-container {
+    width: 300px;
+    height: 30px;
+    border: 4px solid #333;
+    padding: 2px;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #4CAF50;
+    transition: width 0.3s;
+}
+
+#download-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#download-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Main Menu */
+#main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a2e;
+    background-image: url('assets/images/menu-bg.png');
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+}
+
+.menu-title {
+    font-size: 48px;
+    color: #f8f8f8;
+    text-shadow: 4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000;
+    margin-bottom: 60px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.menu-btn {
+    margin: 15px;
+    padding: 15px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.menu-btn:hover {
+    background-color: #c0392b;
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.menu-btn:active {
+    transform: translate(5px, 5px);
+    box-shadow: none;
+}
+
+/* Game Screen */
+#game-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #87CEEB;
+    background-image: url('assets/images/game-bg.png');
+    display: none;
+    overflow: hidden;
+}
+
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* HUD */
+#hud {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    color: white;
+    font-size: 16px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.health-bar {
+    width: 200px;
+    height: 20px;
+    background-color: #333;
+    border: 2px solid #000;
+    margin-bottom: 10px;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    background-color: #e74c3c;
+    transition: width 0.3s;
+}
+
+/* Settings Menu */
+#settings-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 950;
+}
+
+.settings-container {
+    background-color: #1a1a2e;
+    padding: 30px;
+    border-radius: 10px;
+    border: 4px solid #e74c3c;
+    width: 80%;
+    max-width: 500px;
+}
+
+.settings-title {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.settings-option {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.settings-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.settings-slider {
+    width: 100%;
+}
+
+.settings-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Pixel Art Styles */
+.pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
